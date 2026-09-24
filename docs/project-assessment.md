@@ -1,8 +1,8 @@
-# Project assessment — 2026-09-18
+# Project assessment — 2026-09-25
 
 ## Outcome
 
-The project now has a working local web/API prototype and optional cloud-agent integration code. It is ready for a synthetic local hackathon demonstration, not for clinical use or a complete Foundry submission.
+The project has a working local web/API prototype, a verified seven-agent Foundry solution, connected privacy-minimized monitoring and completed cloud evaluation baselines. It is ready for a synthetic hackathon demonstration, not for clinical use.
 
 ## PRD acceptance review
 
@@ -16,10 +16,10 @@ The project now has a working local web/API prototype and optional cloud-agent i
 | Support matching | Local implementation | Service/coverage/availability filtering and adolescent support; fictional registries. |
 | Alerts | Simulation implemented | Selected-facility consent, session isolation, idempotence, and `sent: false`. |
 | Symptom history | Local implementation | SQLite records per browser session, no raw notes, clear-history action. Production identity/RBAC absent. |
-| Foundry agent/tool use | Expanded implementation; cloud rerun pending | Six roles are orchestrated locally. Five tool agents use restricted case-specific tools and exact authoritative-output checks; knowledge requires File Search. Earlier triage/referral and knowledge paths were live-verified, while the current six-role contract still needs intentional bootstrap and a live smoke test. |
-| Evaluation | Local implementation | 24 cases, classification and referral metrics; 25 regression tests. Cloud judge evaluations and held-out cases pending. |
+| Foundry agent/tool use | Verified cloud implementation | The orchestrator runs six workflow roles; Ask Mama Link is the seventh agent. Five tool agents use restricted case-specific tools and exact authoritative-output checks, knowledge requires File Search, and chat uses its saved Foundry version. |
+| Evaluation | Cloud baseline complete | Foundry baselines cover 24 synthetic cases across all seven agents; final selected runs passed 24/24. Local rule evaluation remains 19/24 because unmatched normal cases are intentionally unassessed. Held-out and clinical validation remain pending. |
 | Safety | Partial | Unknown inputs stay unassessed; no dispatch tool exposed to models; no generated clinical advice in local app. Clinical validation and live model red-teaming pending. |
-| Tracing / monitoring | Cloud prototype connected | Application Insights and a 30-day Log Analytics workspace are provisioned. Only aggregate operation count/status/duration are emitted; automatic request and Azure SDK instrumentation is disabled. |
+| Tracing / monitoring | Connected and verified | The Foundry project is connected to Application Insights. Metadata-only spans and aggregate metrics were observed for all seven agents; automatic request and Azure SDK instrumentation is disabled. |
 | Deployment | Local only | Loopback web server. Authenticated public hosting not configured. |
 | Geographic exploration | Expanded prototype | Interactive Nigeria schematic aggregates 100 synthetic cases and drills into places. The northern skew is a test fixture, not prevalence evidence. |
 | Language access | Partial | Navigation/headline translations for English, Pidgin, Yoruba, Igbo and Hausa; full professional translation and clinical review pending. |
@@ -33,15 +33,16 @@ Rules were developed with these known scenarios, so these are regression scores,
 
 ## Verified locally
 
-- 43 automated tests cover rule precedence, missing values, numeric validation, warning pathways, referral matching, consent, repeated consent, cross-session access, cross-origin writes, prompt-like notes, every tool-agent contract, required knowledge File Search and six-role orchestration.
+- 45 automated tests cover rule precedence, missing values, numeric validation, warning pathways, referral matching, consent, repeated consent, cross-session access, cross-origin writes, prompt-like notes, every tool-agent contract, required knowledge File Search and six-role orchestration.
 - Browser verification covers homepage layout, fixture and custom intake, care options, explicit simulated consent, saved history and the 24-row evaluation dashboard.
-- Azure AI Projects 2.6.1 definitions were checked locally. A live Foundry smoke test passed on 2026-09-18: triage returned `critical`, and referral returned `FAC-009`, `FAC-002`, and `FAC-004` after tool use. No external referral was sent.
-- Foundry File Search ingestion and a live grounded retrieval passed on 2026-09-18. The knowledge agent identified the UNFPA association with prolonged obstructed labour and returned the indexed source URL while retaining the pending-review label.
-- The API health check reported `telemetry_enabled: true` after Application Insights provisioning. Raw request content, routes, identifiers, prompts, notes and tool payloads are outside the telemetry allow-list.
+- Azure AI Projects 2.6.1 definitions were checked locally. The current six-role workflow and chat agent passed live smoke tests on 2026-09-24. No external referral was sent.
+- Foundry File Search ingestion and grounded retrieval are live. The knowledge agent uses the indexed, review-pending WHO/UNFPA corpus.
+- On 2026-09-25, final selected Foundry runs passed intake 3/3, triage 4/4, knowledge 3/3, referral 4/4, transport support 3/3, follow-up 3/3 and chat 4/4. Tool-agent scoring uses completed stored responses because Foundry cannot execute client-local Python functions.
+- Application Insights showed events, traces, dependencies and metrics, with named metadata for all seven agents. Raw request content, routes, identifiers, prompts, notes and tool payloads remain outside the app's telemetry allow-list.
 
 ## External inputs needed
 
 1. Clinically reviewed rules, low-risk completion requirements and approved source documents.
 2. A chosen authenticated hosting destination and verified service partners for any real referral integration.
 
-The Foundry resource, project, deployment, three agent roles, review-pending File Search corpus, and privacy-safe monitoring prototype are configured. The next cloud milestone is held-out cloud evaluation, followed by authenticated deployment.
+The Foundry resource, project, deployment, seven agent roles, review-pending File Search corpus, privacy-safe monitoring and synthetic cloud evaluations are configured. Remaining work is clinical review, held-out/red-team evaluation, an administrator-granted Log Analytics Reader role for trace-filtered service-side evaluation, and authenticated deployment.

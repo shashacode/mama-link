@@ -1,0 +1,1022 @@
+{
+  "created_at": "2026-09-24T22:55:27.227545+00:00",
+  "synthetic_only": true,
+  "optimizer_used": false,
+  "total_rows": 24,
+  "estimated_token_ceiling": 282240,
+  "configured_cap": 500000,
+  "evaluations": [
+    {
+      "role": "intake",
+      "agent": {
+        "name": "mama-link-intake",
+        "version": "2"
+      },
+      "dataset": {
+        "name": "mamalink-intake-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-intake-evaluation/versions/20260924-225527"
+      },
+      "row_count": 3,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Tool Call Accuracy"
+      ],
+      "evaluation_id": "eval_f80f1f5562694ed5b733f51aaa3e10f9",
+      "run_id": "evalrun_5fafb6e974e34b9988db3246b4954d59",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_f80f1f5562694ed5b733f51aaa3e10f9/run/evalrun_5fafb6e974e34b9988db3246b4954d59",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 3,
+        "skipped": 3
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 57,
+          "invocation_count": 3,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 522,
+          "total_tokens": 579,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 57,
+          "invocation_count": 3,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 522,
+          "total_tokens": 579,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 6,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 0,
+          "total_tokens": 0,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 3
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "triage",
+      "agent": {
+        "name": "mama-link-triage",
+        "version": "3"
+      },
+      "dataset": {
+        "name": "mamalink-triage-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-triage-evaluation/versions/20260924-225527"
+      },
+      "row_count": 4,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Tool Call Accuracy"
+      ],
+      "evaluation_id": "eval_30573052a29b4079a943cc4b5803f6cc",
+      "run_id": "evalrun_9e3cde4296f544088e729b5e1e5a2a15",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_30573052a29b4079a943cc4b5803f6cc/run/evalrun_9e3cde4296f544088e729b5e1e5a2a15",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 4,
+        "skipped": 4
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 72,
+          "invocation_count": 4,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 664,
+          "total_tokens": 736,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 72,
+          "invocation_count": 4,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 664,
+          "total_tokens": 736,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 8,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 0,
+          "total_tokens": 0,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 4
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 4
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 4
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "knowledge",
+      "agent": {
+        "name": "mama-link-knowledge",
+        "version": "1"
+      },
+      "dataset": {
+        "name": "mamalink-knowledge-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-knowledge-evaluation/versions/20260924-225527"
+      },
+      "row_count": 3,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Coherence"
+      ],
+      "evaluation_id": "eval_3e46ce70c622459abfbe056b62bcf0a4",
+      "run_id": "evalrun_84b5a8841158439091c314933d937b5e",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_3e46ce70c622459abfbe056b62bcf0a4/run/evalrun_84b5a8841158439091c314933d937b5e",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 3,
+        "total": 3,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 1038,
+          "invocation_count": 9,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 17480,
+          "total_tokens": 18518,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 550,
+          "invocation_count": 3,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 5612,
+          "total_tokens": 6162,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 550,
+          "invocation_count": 3,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 5612,
+          "total_tokens": 6162,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 1038,
+          "invocation_count": 9,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 17480,
+          "total_tokens": 18518,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Coherence",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "referral",
+      "agent": {
+        "name": "mama-link-referral",
+        "version": "3"
+      },
+      "dataset": {
+        "name": "mamalink-referral-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-referral-evaluation/versions/20260924-225527"
+      },
+      "row_count": 4,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Tool Call Accuracy"
+      ],
+      "evaluation_id": "eval_bc9b03d0935f40229f2d9d1b92223e95",
+      "run_id": "evalrun_fe1d7c0a6d7a45ecab443b33b37a9a41",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_bc9b03d0935f40229f2d9d1b92223e95/run/evalrun_fe1d7c0a6d7a45ecab443b33b37a9a41",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 4,
+        "skipped": 4
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 76,
+          "invocation_count": 4,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 724,
+          "total_tokens": 800,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 76,
+          "invocation_count": 4,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 724,
+          "total_tokens": 800,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 8,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 0,
+          "total_tokens": 0,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 4
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 4
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 4
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "transport_support",
+      "agent": {
+        "name": "mama-link-transport-support",
+        "version": "2"
+      },
+      "dataset": {
+        "name": "mamalink-transport-support-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-transport-support-evaluation/versions/20260924-225527"
+      },
+      "row_count": 3,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Tool Call Accuracy"
+      ],
+      "evaluation_id": "eval_bff4e75bae824d128f9da5451a0f4e34",
+      "run_id": "evalrun_ddf486bcbeb4452ca65b2a8eb1f9e599",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_bff4e75bae824d128f9da5451a0f4e34/run/evalrun_ddf486bcbeb4452ca65b2a8eb1f9e599",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 3,
+        "skipped": 3
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 54,
+          "invocation_count": 3,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 525,
+          "total_tokens": 579,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 54,
+          "invocation_count": 3,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 525,
+          "total_tokens": 579,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 6,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 0,
+          "total_tokens": 0,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 3
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "follow_up",
+      "agent": {
+        "name": "mama-link-follow-up",
+        "version": "2"
+      },
+      "dataset": {
+        "name": "mamalink-follow-up-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-follow-up-evaluation/versions/20260924-225527"
+      },
+      "row_count": 3,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Tool Call Accuracy"
+      ],
+      "evaluation_id": "eval_2fb73ba97c9e4fadad794a16834cf0fb",
+      "run_id": "evalrun_0c141ec05c5a4365ad2f4bb983e2f62a",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_2fb73ba97c9e4fadad794a16834cf0fb/run/evalrun_0c141ec05c5a4365ad2f4bb983e2f62a",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 0,
+        "total": 3,
+        "skipped": 3
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 57,
+          "invocation_count": 3,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 534,
+          "total_tokens": 591,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 57,
+          "invocation_count": 3,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 534,
+          "total_tokens": 591,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 0,
+          "invocation_count": 6,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 0,
+          "total_tokens": 0,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 3
+        },
+        {
+          "failed": 0,
+          "passed": 0,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 3
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "chat",
+      "agent": {
+        "name": "mama-link-chat",
+        "version": "2"
+      },
+      "dataset": {
+        "name": "mamalink-chat-evaluation",
+        "version": "20260924-225527",
+        "id": "azureai://accounts/mamalink-ai-258f106f5903/projects/mama-link/data/mamalink-chat-evaluation/versions/20260924-225527"
+      },
+      "row_count": 4,
+      "evaluators": [
+        "Task Adherence",
+        "Intent Resolution",
+        "Coherence"
+      ],
+      "evaluation_id": "eval_5c1a75d2f5ed4cc2b8d3f5c621050acf",
+      "run_id": "evalrun_5bb9ed4154894f699240bee0faafc348",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_5c1a75d2f5ed4cc2b8d3f5c621050acf/run/evalrun_5bb9ed4154894f699240bee0faafc348",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 4,
+        "total": 4,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 1296,
+          "invocation_count": 12,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 20292,
+          "total_tokens": 21588,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 416,
+          "invocation_count": 4,
+          "run_model_name": "gpt-4.1-mini",
+          "prompt_tokens": 1080,
+          "total_tokens": 1496,
+          "model_name": "gpt-4.1-mini"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 416,
+          "invocation_count": 4,
+          "run_model_name": "azure_ai_agent_target",
+          "prompt_tokens": 1080,
+          "total_tokens": 1496,
+          "model_name": "azure_ai_agent_target"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 1296,
+          "invocation_count": 12,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 20292,
+          "total_tokens": 21588,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Task Adherence",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Coherence",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    }
+  ],
+  "completed_response_evaluations": [
+    {
+      "role": "intake",
+      "agent": {
+        "name": "mama-link-intake",
+        "version": "2"
+      },
+      "method": "completed_responses",
+      "row_count": 3,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_296546ddb2f943958890afb8b6eb25da",
+      "run_id": "evalrun_9127236806a94606a8942471fba9c1dd",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_296546ddb2f943958890afb8b6eb25da/run/evalrun_9127236806a94606a8942471fba9c1dd",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 3,
+        "total": 3,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 639,
+          "invocation_count": 6,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 9558,
+          "total_tokens": 10197,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 639,
+          "invocation_count": 6,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 9558,
+          "total_tokens": 10197,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 2,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 1,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "referral",
+      "agent": {
+        "name": "mama-link-referral",
+        "version": "3"
+      },
+      "method": "completed_responses",
+      "row_count": 4,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_2a959dd6e00b482aa5ccafba24f9ace3",
+      "run_id": "evalrun_7780a52922f94c57becdace3a512d8df",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_2a959dd6e00b482aa5ccafba24f9ace3/run/evalrun_7780a52922f94c57becdace3a512d8df",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 4,
+        "total": 4,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 706,
+          "invocation_count": 7,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 14261,
+          "total_tokens": 14967,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 706,
+          "invocation_count": 7,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 14261,
+          "total_tokens": 14967,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 1,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "transport_support",
+      "agent": {
+        "name": "mama-link-transport-support",
+        "version": "2"
+      },
+      "method": "completed_responses",
+      "row_count": 3,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_ad451718859940ae91375f612b996219",
+      "run_id": "evalrun_aa412b57bbe1412c9b1203d8bbf63263",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_ad451718859940ae91375f612b996219/run/evalrun_aa412b57bbe1412c9b1203d8bbf63263",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 3,
+        "total": 3,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 595,
+          "invocation_count": 6,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 9034,
+          "total_tokens": 9629,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 595,
+          "invocation_count": 6,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 9034,
+          "total_tokens": 9629,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "follow_up",
+      "agent": {
+        "name": "mama-link-follow-up",
+        "version": "2"
+      },
+      "method": "completed_responses",
+      "row_count": 3,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_41846098f2fb4b97a0d828f7e4cd6060",
+      "run_id": "evalrun_3959aaec01f54e1e8c1c8796140a9326",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_41846098f2fb4b97a0d828f7e4cd6060/run/evalrun_3959aaec01f54e1e8c1c8796140a9326",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 3,
+        "total": 3,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 564,
+          "invocation_count": 5,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 7004,
+          "total_tokens": 7568,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 564,
+          "invocation_count": 5,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 7004,
+          "total_tokens": 7568,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 2,
+          "testing_criteria": "Intent Resolution",
+          "errored": 1,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "role": "triage",
+      "agent": {
+        "name": "mama-link-triage",
+        "version": "3"
+      },
+      "method": "completed_responses",
+      "row_count": 4,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_474d21aff5ba4b9ea7fd3db726bde3f9",
+      "run_id": "evalrun_653ba35120784dc0a4c8329e693f52b2",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_474d21aff5ba4b9ea7fd3db726bde3f9/run/evalrun_653ba35120784dc0a4c8329e693f52b2",
+      "result_counts": {
+        "errored": 0,
+        "failed": 0,
+        "passed": 4,
+        "total": 4,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 867,
+          "invocation_count": 8,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 12467,
+          "total_tokens": 13334,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 867,
+          "invocation_count": 8,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 12467,
+          "total_tokens": 13334,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    }
+  ],
+  "superseded_evaluations": [
+    {
+      "role": "triage",
+      "agent": {
+        "name": "mama-link-triage",
+        "version": "3"
+      },
+      "method": "completed_responses",
+      "row_count": 4,
+      "evaluators": [
+        "Intent Resolution",
+        "Tool Call Accuracy",
+        "Tool Input Accuracy"
+      ],
+      "evaluation_id": "eval_005c894d1594495ea9001dc3de551c4f",
+      "run_id": "evalrun_eab9c3c7455642f2beb0910b70b6881f",
+      "status": "completed",
+      "report_url": "https://ai.azure.com/nextgen/r/eeRjIEasRBioBiWPEG9ZAw,foundry-hackathon-rg-0c39e178,,mamalink-ai-258f106f5903,mama-link/build/evaluations/eval_005c894d1594495ea9001dc3de551c4f/run/evalrun_eab9c3c7455642f2beb0910b70b6881f",
+      "result_counts": {
+        "errored": 0,
+        "failed": 2,
+        "passed": 2,
+        "total": 4,
+        "skipped": 0
+      },
+      "per_model_usage": [
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 843,
+          "invocation_count": 8,
+          "run_model_name": "gpt-4.1-mini-2025-04-14",
+          "prompt_tokens": 12397,
+          "total_tokens": 13240,
+          "model_name": "gpt-4.1-mini-2025-04-14"
+        },
+        {
+          "cached_tokens": 0,
+          "completion_tokens": 843,
+          "invocation_count": 8,
+          "run_model_name": "azure_ai_evaluation",
+          "prompt_tokens": 12397,
+          "total_tokens": 13240,
+          "model_name": "azure_ai_evaluation"
+        }
+      ],
+      "per_testing_criteria_results": [
+        {
+          "failed": 2,
+          "passed": 2,
+          "testing_criteria": "Intent Resolution",
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 3,
+          "testing_criteria": "Tool Call Accuracy",
+          "errored": 1,
+          "skipped": 0
+        },
+        {
+          "failed": 0,
+          "passed": 4,
+          "testing_criteria": "Tool Input Accuracy",
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "error": null
+    }
+  ],
+  "retry_estimated_token_ceiling": 47040,
+  "effective_estimated_token_ceiling": 329280
+}

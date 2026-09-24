@@ -55,12 +55,41 @@ This preserves the other agent references and records the chat model in the mani
 
 Tool execution is restricted to the requested case and role. No dispatch, consent mutation, filesystem or general-purpose execution tool is available to the model. The bounded function-call loop rejects answers without tool use and any intake, classification, facility, support or follow-up output that differs from the authoritative local result. Knowledge answers are rejected unless the response contains a File Search call. The web UI continues to use the deterministic local workflow, even if a `.env` is present.
 
-## Remaining cloud milestones
+## Monitoring and evaluation status
 
-1. Inspect and retain the 2026-09-24 live smoke-test traces for the current six-role contract; rerun only after an intentional agent or model change.
-2. Have a qualified clinical owner review and approve the prototype corpus in `knowledge/public-sources`. The current WHO/UNFPA summary is indexed for demonstration and explicitly marked pending review.
-3. Keep the Application Insights allow-list limited to aggregate operation count, status, and duration. Raw symptoms, prompts, notes, request paths, case IDs, session IDs, and tool payloads are excluded.
-4. Run the supplied `eval_portal.jsonl` in Foundry and add held-out grounding, unsafe-advice and adversarial tests. Local fixture scores do not measure model quality.
+Application Insights is connected to the Foundry project as `mamalink-appinsights`. Metadata-only agent spans and aggregate metrics are reaching the linked 30-day Log Analytics workspace. On 2026-09-25 the workspace contained events, traces, dependencies and metrics for all seven named agents: intake, triage, knowledge, referral, transport support, follow-up and Ask Mama Link chat. Prompts, model outputs, symptoms, notes, case IDs and profile data are not recorded by the app's manual telemetry.
+
+The Foundry Evaluation portal now contains a bounded, synthetic baseline for every agent. The final selected runs passed all 24 cases:
+
+| Agent | Evaluation method | Passed |
+| --- | --- | ---: |
+| Intake | Completed stored responses | 3/3 |
+| Triage | Completed stored responses | 4/4 |
+| Knowledge | Direct Foundry agent target | 3/3 |
+| Referral | Completed stored responses | 4/4 |
+| Transport support | Completed stored responses | 3/3 |
+| Follow-up | Completed stored responses | 3/3 |
+| Ask Mama Link chat | Direct Foundry agent target | 4/4 |
+
+Foundry can invoke hosted chat and File Search agents directly. It cannot execute the five client-local Python function tools, so direct target runs for those agents correctly show skipped rows. Their scored baseline instead runs each restricted local tool workflow to completion, retains its Foundry response ID, and evaluates that stored interaction for intent resolution, tool-call accuracy and tool-input accuracy. This preserves the actual tool trace while avoiding a misleading empty evaluation.
+
+The versioned evidence, evaluation/run IDs and portal report links are in [`foundry-evaluation-latest.json`](foundry-evaluation-latest.json). The effective modeled ceiling for the retained baseline plus the corrected triage rerun was 329,280 tokens, below the configured 500,000-token cap; actual billing depends on Azure usage records. No optimizer was run.
+
+Reproduce the baselines only after an intentional agent, prompt, model or tool-contract change:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\run_foundry_evaluations.py --max-estimated-tokens 500000
+.\.venv\Scripts\python.exe scripts\run_foundry_response_evaluations.py --max-combined-estimated-tokens 500000
+```
+
+The current Azure user can operate the project but cannot create role assignments. For trace-filtered service-side evaluations, an Azure RBAC administrator still needs to grant the project managed identity (`e35299f3-74d8-4635-9a51-bc3c179f0258`) **Log Analytics Reader** on both the Application Insights resource and its Log Analytics workspace. This does not block the connected monitoring dashboards or the completed evaluations above.
+
+## Remaining production milestones
+
+1. Have a qualified clinical owner review and approve the prototype corpus in `knowledge/public-sources`; it remains explicitly marked pending review.
+2. Add held-out grounding, unsafe-advice and adversarial tests. Current synthetic baselines demonstrate software behaviour, not clinical performance.
+3. Keep the telemetry allow-list metadata-only and review it whenever instrumentation changes.
+4. Add authenticated hosting, approved data handling, verified facility availability and independently authorized notification integrations before external clinical use.
 
 ## Knowledge and monitoring commands
 
@@ -82,8 +111,6 @@ Application Insights and its 30-day Log Analytics workspace are provisioned by:
 .\infra\provision-monitoring.ps1
 ```
 
-The script is idempotent and writes the connection string to ignored `.env`
-without printing it. Restart the web process after provisioning.
-5. Add authenticated hosting, approved data handling, verified facility availability and independently authorized notification integrations before external clinical use.
+The script is idempotent, creates the Foundry project connection when missing, and writes the connection string to ignored `.env` without printing it. Restart the web process after provisioning. Creating the connection does not grant the managed identity the separate Log Analytics Reader role described above.
 
-No live cloud success, clinical approval, or public deployment is claimed by the local readiness report.
+Live cloud-agent, monitoring and evaluation success is claimed only for the dated synthetic baseline. Clinical approval and public deployment are not claimed.

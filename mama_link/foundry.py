@@ -7,6 +7,10 @@ import re
 from pathlib import Path
 from urllib.parse import urlsplit
 from .core import ROOT, get_case, run_workflow, screen
+from . import telemetry
+
+# Enables metadata-only GenAI spans. Prompt and response content recording remains off.
+os.environ.setdefault("AZURE_EXPERIMENTAL_ENABLE_GENAI_TRACING", "true")
 
 MANIFEST = ROOT / ".local/foundry-agents.json"
 KNOWLEDGE_MANIFEST = ROOT / ".local/foundry-knowledge.json"
@@ -373,67 +377,89 @@ def canonical_agent_output(role, case_id):
 def run_agent(client, reference, role, case_id):
     if role not in TOOL_ROLES:
         raise ValueError(f"Unknown tool-agent role: {role}")
-    conversation = client.conversations.create()
-    called = False
-    tool_log = []
-    payload = f"Use your tool to process synthetic case {case_id}. Return the required JSON."
-    try:
-        for _ in range(5):
-            response = client.responses.create(conversation=conversation.id, input=payload,
-                extra_body={"agent_reference": {"type": "agent_reference", **reference}})
-            calls = [item for item in response.output if item.type == "function_call"]
-            if not calls:
-                if not called:
-                    raise ValueError("Agent answered without its required tool; response rejected.")
-                result = json.loads(response.output_text)
-                expected = canonical_agent_output(role, case_id)
-                if result != expected:
-                    raise ValueError(
-                        f"{role} agent output did not match authoritative tool output; "
-                        f"expected={json.dumps(expected, sort_keys=True)}, "
-                        f"actual={json.dumps(result, sort_keys=True)}. Response rejected."
-                    )
-                return {"role": role, "validated_output": result, "tool_calls": tool_log}
-            payload = []
-            for call in calls:
-                output = execute_tool(call.name, json.loads(call.arguments), case_id, role)
-                called = True
-                tool_log.append({"tool": call.name, "status": "completed"})
-                payload.append({"type": "function_call_output", "call_id": call.call_id, "output": json.dumps(output)})
-        raise ValueError("Agent exceeded the bounded tool-call loop.")
-    finally:
-        client.conversations.delete(conversation_id=conversation.id)
+    with telemetry.agent_span(reference["name"], reference.get("version", "latest"), role):
+        conversation = client.conversations.create()
+        called = False
+        tool_log = []
+        requests = {
+            "triage": (
+                f"Use screen_case to process synthetic case {case_id}. "
+                "Return exactly one JSON object containing only the classification field, as required."
+            ),
+            "referral": (
+                f"Use referral_plan to process synthetic case {case_id}. Return exactly one JSON object "
+                "containing the classification and all facility_ids in tool order, as required."
+            ),
+        }
+        payload = requests.get(
+            role,
+            f"Use your required tool to process synthetic case {case_id}. Return exactly the required JSON object.",
+        )
+        try:
+            for _ in range(5):
+                response = client.responses.create(conversation=conversation.id, input=payload,
+                    extra_body={"agent_reference": {"type": "agent_reference", **reference}})
+                calls = [item for item in response.output if item.type == "function_call"]
+                if not calls:
+                    if not called:
+                        raise ValueError("Agent answered without its required tool; response rejected.")
+                    result = json.loads(response.output_text)
+                    expected = canonical_agent_output(role, case_id)
+                    if result != expected:
+                        raise ValueError(
+                            f"{role} agent output did not match authoritative tool output; "
+                            f"expected={json.dumps(expected, sort_keys=True)}, "
+                            f"actual={json.dumps(result, sort_keys=True)}. Response rejected."
+                        )
+                    return {
+                        "role": role,
+                        "validated_output": result,
+                        "tool_calls": tool_log,
+                        "response_id": getattr(response, "id", None),
+                    }
+                payload = []
+                for call in calls:
+                    output = execute_tool(call.name, json.loads(call.arguments), case_id, role)
+                    called = True
+                    tool_log.append({"tool": call.name, "status": "completed"})
+                    payload.append({"type": "function_call_output", "call_id": call.call_id, "output": json.dumps(output)})
+            raise ValueError("Agent exceeded the bounded tool-call loop.")
+        finally:
+            client.conversations.delete(conversation_id=conversation.id)
 
 
 def run_knowledge_agent(client, reference, question):
     """Run File Search and reject an answer that did not use the configured corpus."""
-    conversation = client.conversations.create()
-    try:
-        response = client.responses.create(
-            conversation=conversation.id,
-            input=question,
-            extra_body={"agent_reference": {"type": "agent_reference", **reference}},
-        )
-        calls = [item for item in response.output if item.type == "file_search_call"]
-        if not calls:
-            raise ValueError("Knowledge agent answered without File Search; response rejected.")
-        answer = response.output_text.strip()
-        if not answer:
-            raise ValueError("Knowledge agent returned an empty answer; response rejected.")
-        return {
-            "role": "knowledge",
-            "validated_output": {
-                "review_status": "pending_clinical_review",
-                "answer": answer,
-            },
-            "tool_calls": [{"tool": "file_search", "status": "completed"} for _ in calls],
-        }
-    finally:
-        client.conversations.delete(conversation_id=conversation.id)
+    with telemetry.agent_span(reference["name"], reference.get("version", "latest"), "knowledge"):
+        conversation = client.conversations.create()
+        try:
+            response = client.responses.create(
+                conversation=conversation.id,
+                input=question,
+                extra_body={"agent_reference": {"type": "agent_reference", **reference}},
+            )
+            calls = [item for item in response.output if item.type == "file_search_call"]
+            if not calls:
+                raise ValueError("Knowledge agent answered without File Search; response rejected.")
+            answer = response.output_text.strip()
+            if not answer:
+                raise ValueError("Knowledge agent returned an empty answer; response rejected.")
+            return {
+                "role": "knowledge",
+                "validated_output": {
+                    "review_status": "pending_clinical_review",
+                    "answer": answer,
+                },
+                "tool_calls": [{"tool": "file_search", "status": "completed"} for _ in calls],
+                "response_id": getattr(response, "id", None),
+            }
+        finally:
+            client.conversations.delete(conversation_id=conversation.id)
 
 
 def demo(case_id):
     get_case(case_id)  # Validate locally before making any cloud request.
+    telemetry.configure()
     settings = validated_settings()
     if not MANIFEST.exists():
         raise ValueError("Run python -m mama_link.foundry bootstrap first.")
@@ -465,6 +491,7 @@ def demo(case_id):
                     results.append(run_knowledge_agent(client, knowledge_manifest["agent"], knowledge_question))
                 else:
                     results.append(run_agent(client, manifest["agents"][role], role, case_id))
+    telemetry.force_flush()
     return {"mode": "foundry_six_role_demo", "case_id": case_id, "agents": results,
             "workflow": workflow, "knowledge_status": "connected_pending_clinical_review"}
 

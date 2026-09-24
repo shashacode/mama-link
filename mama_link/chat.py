@@ -6,6 +6,7 @@ import re
 from urllib.parse import urlsplit
 from .education import ARTICLES, SOURCE
 from .foundry import load_settings, validated_settings, project_client, chat_agent_reference
+from . import telemetry
 
 LOGGER = logging.getLogger(__name__)
 
@@ -84,12 +85,13 @@ def answer(message, profile, history, share_context, conversation=None):
             with project_client(validated_settings()) as project:
                 with project.get_openai_client() as raw:
                     client = raw.with_options(timeout=30, max_retries=0)
-                    response = client.responses.create(
-                        input=json.dumps(payload),
-                        extra_body={"agent_reference": {"type": "agent_reference", **agent}},
-                        max_output_tokens=650,
-                        store=False,
-                    )
+                    with telemetry.agent_span(agent["name"], agent.get("version", "latest"), "chat"):
+                        response = client.responses.create(
+                            input=json.dumps(payload),
+                            extra_body={"agent_reference": {"type": "agent_reference", **agent}},
+                            max_output_tokens=650,
+                            store=False,
+                        )
                     output = response.output_text
         if not output.strip():
             raise ValueError('Empty answer')
