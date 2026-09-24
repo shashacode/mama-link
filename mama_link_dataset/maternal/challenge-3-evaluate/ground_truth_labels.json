@@ -1,0 +1,201 @@
+[
+  {
+    "id": "eval-001",
+    "classification": "normal",
+    "urgency": "low",
+    "required_facility_capabilities": [
+      "routine_maternal_care"
+    ]
+  },
+  {
+    "id": "eval-002",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "hypertension_management"
+    ]
+  },
+  {
+    "id": "eval-003",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "hypertension_management"
+    ]
+  },
+  {
+    "id": "eval-004",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "hypertension_management"
+    ]
+  },
+  {
+    "id": "eval-005",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "c_section",
+      "blood_services"
+    ]
+  },
+  {
+    "id": "eval-006",
+    "classification": "normal",
+    "urgency": "low",
+    "required_facility_capabilities": [
+      "routine_maternal_care"
+    ]
+  },
+  {
+    "id": "eval-007",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "blood_services"
+    ]
+  },
+  {
+    "id": "eval-008",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "blood_services"
+    ]
+  },
+  {
+    "id": "eval-009",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "maternal_infection_management"
+    ]
+  },
+  {
+    "id": "eval-010",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-011",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "fistula_assessment"
+    ]
+  },
+  {
+    "id": "eval-012",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "fistula_assessment"
+    ]
+  },
+  {
+    "id": "eval-013",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-014",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-015",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-016",
+    "classification": "normal",
+    "urgency": "low",
+    "required_facility_capabilities": [
+      "routine_maternal_care"
+    ]
+  },
+  {
+    "id": "eval-017",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-018",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care"
+    ]
+  },
+  {
+    "id": "eval-019",
+    "classification": "critical",
+    "urgency": "high",
+    "required_facility_capabilities": [
+      "emergency_obstetric_care",
+      "hypertension_management"
+    ]
+  },
+  {
+    "id": "eval-020",
+    "classification": "normal",
+    "urgency": "low",
+    "required_facility_capabilities": [
+      "routine_maternal_care"
+    ]
+  },
+  {
+    "id": "eval-021",
+    "classification": "normal",
+    "urgency": "low",
+    "required_facility_capabilities": [
+      "routine_maternal_care"
+    ]
+  },
+  {
+    "id": "eval-022",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "hypertension_management"
+    ]
+  },
+  {
+    "id": "eval-023",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  },
+  {
+    "id": "eval-024",
+    "classification": "warning",
+    "urgency": "medium",
+    "required_facility_capabilities": [
+      "maternal_assessment"
+    ]
+  }
+]

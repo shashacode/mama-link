@@ -1,0 +1,121 @@
+{
+  "network": "MAMA-Link Synthetic Support Network",
+  "timestamp": "2026-09-17T15:00:00Z",
+  "disclaimer": "Organizations are fictional and for software simulation only.",
+  "resources": [
+    {
+      "resource_id": "RES-001",
+      "organization": "Demo Safe Mother Transit",
+      "service_types": [
+        "emergency_transport"
+      ],
+      "coverage": [
+        "Akure North",
+        "Akure South",
+        "Idanre"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-002",
+      "organization": "Demo Maternal Support Fund",
+      "service_types": [
+        "transport_subsidy",
+        "treatment_support"
+      ],
+      "coverage": [
+        "Ondo"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-003",
+      "organization": "Demo Fistula Recovery Network",
+      "service_types": [
+        "fistula_referral",
+        "surgery_support",
+        "rehabilitation",
+        "counselling"
+      ],
+      "coverage": [
+        "Ondo",
+        "Ekiti"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-004",
+      "organization": "Demo Community Blood Network",
+      "service_types": [
+        "blood_donor_coordination"
+      ],
+      "coverage": [
+        "Akure South",
+        "Owo"
+      ],
+      "availability": "limited",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-005",
+      "organization": "Demo Birth Preparedness Initiative",
+      "service_types": [
+        "birth_planning",
+        "maternal_education",
+        "delivery_kit"
+      ],
+      "coverage": [
+        "Akure North",
+        "Idanre"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": false
+    },
+    {
+      "resource_id": "RES-006",
+      "organization": "Demo Adolescent Mother Support",
+      "service_types": [
+        "adolescent_support",
+        "counselling",
+        "social_worker_referral"
+      ],
+      "coverage": [
+        "Ondo"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-007",
+      "organization": "Demo Community Health Worker Network",
+      "service_types": [
+        "home_visit",
+        "follow_up",
+        "referral_navigation"
+      ],
+      "coverage": [
+        "Akure North",
+        "Akure South",
+        "Idanre",
+        "Owo"
+      ],
+      "availability": "available",
+      "requires_human_confirmation": true
+    },
+    {
+      "resource_id": "RES-008",
+      "organization": "Demo Medicine Access Partner",
+      "service_types": [
+        "medication_support"
+      ],
+      "coverage": [
+        "Ondo"
+      ],
+      "availability": "limited",
+      "requires_human_confirmation": true
+    }
+  ]
+}

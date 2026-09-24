@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+evaluation/results/
+.pytest_cache/
+.local/
+LibreOffice_*/
+deliverables/qa-render/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+.coverage
+.ruff_cache/

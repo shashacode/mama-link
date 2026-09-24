@@ -1,0 +1,219 @@
+{
+  "scope": "Synthetic screening rules evaluation; no model or clinical validation",
+  "cases": 24,
+  "matches": 19,
+  "rules_version": "0.3-hackathon",
+  "assessed": 19,
+  "expected_emergencies": 7,
+  "emergencies_detected": 7,
+  "referral_matches_for_expected_nonroutine": 19,
+  "expected_nonroutine": 19,
+  "emergency_recall": 1.0,
+  "misses": [
+    {
+      "case_id": "MAT-001",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-006",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-016",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-020",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-021",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    }
+  ],
+  "results": [
+    {
+      "case_id": "MAT-001",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-002",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-003",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-004",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-005",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-006",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-007",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-008",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-009",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-010",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-011",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-012",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-013",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-014",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-015",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-016",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-017",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-018",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-019",
+      "expected": "critical",
+      "actual": "critical",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-020",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-021",
+      "expected": "normal",
+      "actual": "unassessed",
+      "match": false,
+      "referral_correct": false
+    },
+    {
+      "case_id": "MAT-022",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-023",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    },
+    {
+      "case_id": "MAT-024",
+      "expected": "warning",
+      "actual": "warning",
+      "match": true,
+      "referral_correct": true
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "network": "MAMA-Link Synthetic Facility Network",
+  "region": "Ondo State demo geography",
+  "timestamp": "2026-09-17T15:00:00Z",
+  "disclaimer": "Facilities and capabilities are fictional and exist only for hackathon simulation.",
+  "facilities": [
+    {
+      "facility_id": "FAC-001",
+      "name": "Demo Community PHC A",
+      "facility_type": "primary_health_centre",
+      "state": "Ondo",
+      "lga": "Akure North",
+      "community": "Demo Community A",
+      "latitude": 7.265,
+      "longitude": 5.198,
+      "capabilities": [
+        "antenatal_care",
+        "basic_delivery",
+        "midwife",
+        "basic_postpartum_care"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-002",
+      "name": "Demo District Hospital B",
+      "facility_type": "general_hospital",
+      "state": "Ondo",
+      "lga": "Akure South",
+      "community": "Demo Urban Hub",
+      "latitude": 7.248,
+      "longitude": 5.195,
+      "capabilities": [
+        "antenatal_care",
+        "skilled_birth_attendance",
+        "emergency_obstetric_care",
+        "c_section",
+        "blood_services",
+        "hypertension_management",
+        "newborn_stabilization"
+      ],
+      "c_section": true,
+      "blood_services": true,
+      "emergency_obstetric_care": true,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-003",
+      "name": "Demo Rural Clinic C",
+      "facility_type": "clinic",
+      "state": "Ondo",
+      "lga": "Idanre",
+      "community": "Demo Community B",
+      "latitude": 7.112,
+      "longitude": 5.115,
+      "capabilities": [
+        "antenatal_care",
+        "basic_delivery",
+        "midwife"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-004",
+      "name": "Demo Referral Centre D",
+      "facility_type": "specialist_hospital",
+      "state": "Ondo",
+      "lga": "Akure South",
+      "community": "Demo Urban Hub",
+      "latitude": 7.255,
+      "longitude": 5.21,
+      "capabilities": [
+        "antenatal_care",
+        "emergency_obstetric_care",
+        "c_section",
+        "blood_services",
+        "hypertension_management",
+        "critical_care",
+        "newborn_stabilization",
+        "maternal_infection_management"
+      ],
+      "c_section": true,
+      "blood_services": true,
+      "emergency_obstetric_care": true,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-005",
+      "name": "Demo Fistula Care Centre E",
+      "facility_type": "specialist_centre",
+      "state": "Ondo",
+      "lga": "Owo",
+      "community": "Demo Community C",
+      "latitude": 7.196,
+      "longitude": 5.589,
+      "capabilities": [
+        "fistula_assessment",
+        "fistula_repair",
+        "rehabilitation",
+        "counselling",
+        "postpartum_care"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": true,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-006",
+      "name": "Demo General Hospital F",
+      "facility_type": "general_hospital",
+      "state": "Ondo",
+      "lga": "Owo",
+      "community": "Demo Community C",
+      "latitude": 7.2,
+      "longitude": 5.6,
+      "capabilities": [
+        "antenatal_care",
+        "skilled_birth_attendance",
+        "emergency_obstetric_care",
+        "c_section",
+        "blood_services",
+        "hypertension_management"
+      ],
+      "c_section": true,
+      "blood_services": true,
+      "emergency_obstetric_care": true,
+      "fistula_services": false,
+      "status": "limited"
+    },
+    {
+      "facility_id": "FAC-007",
+      "name": "Demo Community PHC G",
+      "facility_type": "primary_health_centre",
+      "state": "Ondo",
+      "lga": "Idanre",
+      "community": "Demo Community D",
+      "latitude": 7.09,
+      "longitude": 5.12,
+      "capabilities": [
+        "antenatal_care",
+        "basic_delivery",
+        "midwife"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-008",
+      "name": "Demo Maternal Centre H",
+      "facility_type": "maternal_centre",
+      "state": "Ondo",
+      "lga": "Akure North",
+      "community": "Demo Community E",
+      "latitude": 7.3,
+      "longitude": 5.23,
+      "capabilities": [
+        "antenatal_care",
+        "skilled_birth_attendance",
+        "hypertension_management",
+        "basic_postpartum_care"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-009",
+      "name": "Demo Emergency Hospital I",
+      "facility_type": "general_hospital",
+      "state": "Ondo",
+      "lga": "Idanre",
+      "community": "Demo Transit Hub",
+      "latitude": 7.15,
+      "longitude": 5.17,
+      "capabilities": [
+        "emergency_obstetric_care",
+        "c_section",
+        "blood_services",
+        "hypertension_management",
+        "maternal_infection_management",
+        "newborn_stabilization"
+      ],
+      "c_section": true,
+      "blood_services": true,
+      "emergency_obstetric_care": true,
+      "fistula_services": false,
+      "status": "available"
+    },
+    {
+      "facility_id": "FAC-010",
+      "name": "Demo Postnatal Clinic J",
+      "facility_type": "clinic",
+      "state": "Ondo",
+      "lga": "Akure South",
+      "community": "Demo Urban Hub",
+      "latitude": 7.24,
+      "longitude": 5.205,
+      "capabilities": [
+        "postpartum_care",
+        "wound_review",
+        "breastfeeding_support",
+        "counselling"
+      ],
+      "c_section": false,
+      "blood_services": false,
+      "emergency_obstetric_care": false,
+      "fistula_services": false,
+      "status": "available"
+    }
+  ]
+}

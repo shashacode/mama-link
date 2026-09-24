@@ -1,0 +1,163 @@
+{
+  "version": "0.3-hackathon",
+  "purpose": "Synthetic software test rules only; not a clinical protocol.",
+  "sources_note": [
+    "WHO pre-eclampsia fact sheet: hypertension >=140/90 mmHg after 20 weeks; severe symptoms may include severe headache, visual disturbance, upper abdominal pain.",
+    "WHO maternal-health materials identify haemorrhage, hypertensive disorders, infection and obstructed labour as major maternal risks.",
+    "UNFPA describes obstetric fistula as associated with prolonged obstructed labour and persistent leakage of urine/faeces."
+  ],
+  "extension_note": "R-008 and R-009 are synthetic prototype extensions, not validated clinical protocols. See docs/screening-rules.md for rationale and limitations.",
+  "rules": [
+    {
+      "rule_id": "R-001",
+      "name": "severe_hypertension_screen",
+      "if": {
+        "gestational_age_weeks_gte": 20,
+        "any": [
+          {
+            "systolic_bp_gte": 160
+          },
+          {
+            "diastolic_bp_gte": 110
+          }
+        ]
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-002",
+      "name": "hypertension_screen",
+      "if": {
+        "gestational_age_weeks_gte": 20,
+        "any": [
+          {
+            "systolic_bp_gte": 140
+          },
+          {
+            "diastolic_bp_gte": 90
+          }
+        ]
+      },
+      "classification": "warning",
+      "urgency": "medium"
+    },
+    {
+      "rule_id": "R-003",
+      "name": "seizure_in_pregnancy",
+      "if": {
+        "seizure": true
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-004",
+      "name": "heavy_bleeding",
+      "if": {
+        "heavy_bleeding": true
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-005",
+      "name": "reported_obstructed_labour",
+      "if": {
+        "reported_prolonged_or_obstructed_labour": true
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-006",
+      "name": "possible_fistula_symptoms",
+      "if": {
+        "any": [
+          {
+            "continuous_urine_leakage": true
+          },
+          {
+            "continuous_stool_leakage": true
+          }
+        ],
+        "postpartum": true
+      },
+      "classification": "warning",
+      "urgency": "medium"
+    },
+    {
+      "rule_id": "R-007",
+      "name": "fever_review",
+      "if": {
+        "temperature_c_gte": 38.0
+      },
+      "classification": "warning",
+      "urgency": "medium"
+    },
+    {
+      "rule_id": "R-008",
+      "name": "postpartum_infection_warning_cluster",
+      "if": {
+        "postpartum": true,
+        "temperature_c_gte": 38.0,
+        "foul_smelling_discharge": true,
+        "severe_weakness": true
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-009",
+      "name": "severe_breathlessness_escalation",
+      "if": {
+        "severe_breathlessness": true
+      },
+      "classification": "critical",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-010",
+      "name": "reduced_fetal_movement_review",
+      "if": {"reduced_fetal_movement": true},
+      "classification": "warning",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-011",
+      "name": "fatigue_and_pallor_review",
+      "if": {"fatigue": true, "pallor_reported": true},
+      "classification": "warning",
+      "urgency": "medium"
+    },
+    {
+      "rule_id": "R-012",
+      "name": "flagged_glucose_screen_review",
+      "if": {"recent_glucose_screen_flagged": true},
+      "classification": "warning",
+      "urgency": "medium"
+    },
+    {
+      "rule_id": "R-013",
+      "name": "unable_to_keep_fluids_review",
+      "if": {"unable_to_keep_fluids": true},
+      "classification": "warning",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-014",
+      "name": "clear_fluid_leakage_review",
+      "if": {"clear_fluid_leakage": true},
+      "classification": "warning",
+      "urgency": "high"
+    },
+    {
+      "rule_id": "R-015",
+      "name": "loss_of_consciousness_escalation",
+      "if": {"loss_of_consciousness": true},
+      "classification": "critical",
+      "urgency": "high"
+    }
+  ],
+  "precedence": "critical overrides warning; rules are intentionally simplified for evaluation."
+}

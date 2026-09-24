@@ -1,0 +1,18 @@
+{
+  "emergency": {
+    "number": "112",
+    "label": "Nigeria national emergency number",
+    "coverage": "National",
+    "source": "https://ncc.gov.ng/sites/default/files/2024-11/Standards-National_Numbering_Plan_Draft_Development_New-Plan.pdf",
+    "note": "NCC assigns 112 to the Emergency Communication Centre for emergencies including ambulance, fire, police, FRSC and NEMA. Connection and local response availability can vary."
+  },
+  "facility_registry": {
+    "name": "Nigeria Health Facility Registry",
+    "url": "https://hfr.fmohconnect.gov.ng/facilitieslist",
+    "authority": "Federal Ministry of Health and Social Welfare",
+    "scope": "Hospitals and clinics across all 36 states and the FCT",
+    "contact": "hfr@health.gov.ng",
+    "address": "New Federal Secretariat Complex, Ahmadu Bello Way, Central Business District, Abuja",
+    "api_note": "Live API integration requires an approved HFR API key. Confirm facility services, address, phone and operating status directly before travel."
+  }
+}
