@@ -367,7 +367,7 @@ def configure_styles(doc):
         footer = current_section.footer
         footer.distance = Cm(0.7)
         fp = footer.paragraphs[0]
-        prefix = fp.add_run("Final activity submission   |   24 September 2026   |   ")
+        prefix = fp.add_run("Final activity submission   |   25 September 2026   |   ")
         set_run_font(prefix, size=8.5, color=TEXT_GRAY)
         add_page_number(fp)
 
@@ -385,7 +385,7 @@ def add_title_page(doc):
     for label, value in (
         ("Platform", "Microsoft Foundry Agent Service and FastAPI"),
         ("Solution stage", "Working hackathon MVP with live cloud agent verification"),
-        ("Verification date", "24 September 2026"),
+        ("Verification date", "25 September 2026"),
         ("Intended setting", "Maternal health coordination in underserved Nigerian communities"),
     ):
         p = doc.add_paragraph()
@@ -415,7 +415,7 @@ def build_document():
 
     doc.add_heading("Document Purpose", level=1)
     add_body(doc, "This document explains the implemented MAMA-Link solution and the plan required to make it reliable, measurable and trustworthy. It covers every requested element of the final activity: the business problem, users, specialist agents, tools and knowledge sources, multi-agent rationale, workflow, observability, evaluation, governance, deployment and improvement lifecycle.")
-    add_body(doc, "The main conclusion is that the architecture works as a controlled synthetic demonstration. On 24 September 2026, the patient-facing chat agent and the complete six-role Foundry workflow passed live tests against the existing gpt-4.1-mini deployment. Production use remains blocked by clinical validation, authenticated hosting, approved operational partners and independent evaluation.")
+    add_body(doc, "The main conclusion is that the architecture works as a controlled synthetic demonstration. The patient-facing chat agent and complete six-role Foundry workflow passed live tests against gpt-4.1-mini. On 25 September 2026, 24 selected synthetic agent interactions completed the application's contract checks; this is not 24/24 classification accuracy or 24/24 direct Foundry evaluator passes. The local 24-case rule benchmark produced 19 exact matches and five expected-normal abstentions. Application Insights received privacy-minimised telemetry for all seven agents. Production use remains blocked by clinical validation, authenticated hosting, approved operational partners, held-out evaluation and operational reliability measurement.")
 
     doc.add_heading("Current Verification Snapshot", level=2)
     add_table(doc,
@@ -427,6 +427,8 @@ def build_document():
                   ("Referral capability check", "19 of 19 expected nonroutine cases matched required simulated capabilities"),
                   ("Live Foundry workflow", "Intake, triage, knowledge, referral, transport support and follow-up all passed for MAT-005"),
                   ("Patient-facing chat", "mama-link-chat v2 returned a consented educational answer through the localhost API"),
+                  ("Foundry selected-run completion", "24 of 24 selected synthetic interactions completed application contract checks; five client-tool roles were skipped by direct Foundry evaluators"),
+                  ("Foundry monitoring", "Application Insights connection active; named metadata received for all seven agents"),
               ], [2.05, 4.65], font_size=9.1)
 
     doc.add_heading("Contents", level=1)
@@ -492,7 +494,7 @@ def build_document():
         "Six sequential Foundry workflow roles plus a separate patient-facing chat agent.",
         "A review-pending WHO and UNFPA corpus accessed through Foundry File Search.",
         "Private local accounts, 12-hour server sessions, SQLite history and explicit cloud-context consent.",
-        "Aggregate Application Insights metrics limited to operation name, status and duration.",
+        "Application Insights aggregate metrics and metadata-only spans for all seven agents; prompts, outputs and health details are excluded.",
         "A 100-case synthetic hotspot demonstration and a 24-case labelled regression benchmark.",
     ])
 
@@ -516,13 +518,13 @@ def build_document():
                   ("Model", "gpt-4.1-mini deployment", "General reasoning under role-specific instructions; not a specialist medical model"),
                   ("Knowledge", "Foundry vector store", "Review-pending WHO and UNFPA educational corpus with source attribution"),
                   ("Persistence", "SQLite", "Local accounts, profiles, imports and assessment history"),
-                  ("Monitoring", "Application Insights and Log Analytics", "Allow-listed aggregate operation count, status and duration"),
+                  ("Monitoring", "Application Insights and Log Analytics", "Allow-listed aggregate metrics plus metadata-only agent name, version, role and status spans"),
               ], [1.25, 2.15, 3.3], font_size=8.5)
 
     doc.add_heading("Architecture Control Principle", level=2)
     add_body(doc, "The model is not the system of record. The orchestrator supplies a bounded case identifier, executes a role-specific read-only tool and compares the agent's answer with the deterministic local result. A missing tool call, wrong case, extra argument, altered classification or changed identifier causes the run to fail. This design keeps screening and matching behaviour inspectable and repeatable.")
     doc.add_heading("5 Specialist Agent Responsibilities", level=1)
-    add_body(doc, "The implemented design separates the workflow into six specialist roles. Ask Mama Link is a seventh prompt agent used only for patient-facing education. Agent versions below are the live versions verified on 24 September 2026.")
+    add_body(doc, "The implemented design separates the workflow into six specialist roles. Ask Mama Link is a seventh prompt agent used only for patient-facing education. Agent versions below were live-verified on 24 September 2026 and evaluated in Foundry on 25 September 2026.")
     add_table(doc,
               ["Agent", "Distinct responsibility", "Tool or source", "Validated output and boundary"],
               [
@@ -628,7 +630,7 @@ def build_document():
 
     doc.add_heading("10 Production Readiness Plan", level=1)
     doc.add_heading("Observability Strategy", level=2)
-    add_body(doc, "The current monitor records only allow-listed aggregate fields: operation, status and duration. Automatic FastAPI, request and Azure SDK capture is disabled so symptoms, prompts, notes, case IDs, session IDs, routes and tool payloads are not collected by default. Production observability should preserve that minimisation while adding role-level health signals.")
+    add_body(doc, "Application Insights is connected to the Foundry project as mamalink-appinsights. The application records allow-listed aggregate operation metrics and metadata-only spans containing agent name, version, role and synthetic-data status. Automatic FastAPI, request and Azure SDK capture is disabled, so symptoms, prompts, outputs, notes, case IDs, session IDs, routes and tool payloads are not collected by the application's manual telemetry. Events, traces, dependencies and metrics were observed for all seven agents on 25 September 2026.")
     add_table(doc,
               ["Signal", "Collection plan", "How it helps"],
               [
@@ -643,7 +645,7 @@ def build_document():
               ], [1.45, 2.7, 2.55], font_size=8.25)
 
     doc.add_heading("Trace Design", level=3)
-    add_body(doc, "A production trace should use a generated correlation ID and nested spans for orchestration, each agent invocation, each tool execution and validation. Tags may include agent role, agent version, contract version, tool name, status and duration. The trace must exclude prompts, symptoms, identifiers and raw outputs unless a separately approved, access-controlled diagnostic process is established.")
+    add_body(doc, "The current implementation creates a metadata-only span around each agent invocation and records agent name, version and role. A production trace should extend this with a generated correlation ID and nested spans for orchestration, tool execution and validation. The trace must continue to exclude prompts, symptoms, identifiers and raw outputs unless a separately approved, access-controlled diagnostic process is established. Trace-filtered service-side evaluation additionally requires an Azure administrator to grant the project managed identity Log Analytics Reader on Application Insights and its workspace; this permission does not block the current dashboards or completed evaluations.")
     doc.add_heading("Evaluation Strategy", level=2)
     doc.add_heading("Datasets and Testing Approach", level=3)
     add_bullets(doc, [
@@ -700,7 +702,7 @@ def build_document():
                   ("Prompt injection", "Case text and tool output are declared untrusted; agents receive only bounded tools", "Add systematic jailbreak and indirect-injection evaluation"),
                   ("Tool misuse", "Exact case ID, role and argument checks; all tools are read-only", "Use managed identities, network controls and formal tool risk classification"),
                   ("Cross-user disclosure", "Server-side sessions and ownership checks; names and usernames excluded from constructed chat context", "Production IAM, recovery, penetration testing and access review"),
-                  ("Sensitive telemetry", "Only aggregate operation, status and duration are emitted", "Data protection impact assessment, retention policy and audited access"),
+                  ("Sensitive telemetry", "Aggregate metrics and metadata-only agent spans; content capture disabled", "Data protection impact assessment, retention policy and audited access"),
                   ("Unsafe health response", "Deterministic emergency and medicine paths; no diagnosis or prescribing instruction", "Clinician-approved content, red-team testing and human escalation policy"),
                   ("Cloud outage", "Explicit unavailable response; learning cards and local safety messages remain", "Availability objectives, retry policy, circuit breaker and incident runbook"),
                   ("Stale model reference", "Manifest chat_model must match the configured deployment", "Deployment inventory check in release automation"),
@@ -711,7 +713,7 @@ def build_document():
     add_body(doc, "A user may read learning content without sending information to a model. Ask Mama Link requires an explicit context-sharing choice. The cloud payload may include the question, pregnancy stage, age, gestational timing, medicines, allergies, a bounded conversation and up to three recent assessments. Automatically constructed context excludes account name, username and password. The model request uses store false, and the application does not persist chat messages in the database.")
 
     doc.add_heading("12 Deployment and Operations", level=1)
-    add_body(doc, "The current web application runs on localhost and uses a local SQLite database. The Foundry agents, model deployment, File Search vector store and monitoring workspace exist in Azure. This split is appropriate for a hackathon demonstration but not for public service.")
+    add_body(doc, "The current web application runs on localhost and uses a local SQLite database. The seven Foundry agents, model deployment, File Search vector store, Application Insights connection, evaluation runs and monitoring workspace exist in Azure. This split is appropriate for a hackathon demonstration but not for public service.")
 
     doc.add_heading("Recommended Deployment Path", level=2)
     add_table(doc,
@@ -743,7 +745,13 @@ def build_document():
                   ("Referral capability", "19 of 19 expected nonroutine cases", "Matched simulated capabilities under the documented crosswalk"),
                   ("Live six-role run", "Passed on MAT-005", "Every agent used its required tool or File Search and returned a validated result"),
                   ("Live Ask Mama Link", "Passed through localhost API", "mama-link-chat v2 used gpt-4.1-mini after explicit consent"),
+                  ("Foundry selected-run completion", "24 of 24 contract checks", "Intake 3, triage 4, knowledge 3, referral 4, transport support 3, follow-up 3 and chat 4; direct portal evaluator passes were limited to knowledge 3/3 and chat 4/4 because client-local tools were skipped"),
+                  ("Evaluation cost guard", "329,280-token modelled ceiling", "Below the configured 500,000-token cap; no optimiser was run"),
+                  ("Monitoring ingestion", "Verified for all seven agents", "Application Insights contained events, traces, dependencies and metrics with content capture disabled"),
               ], [1.45, 1.55, 3.7], font_size=8.55)
+    add_body(doc, "Foundry directly invoked the hosted chat and File Search agents. Because Foundry cannot execute the five client-local Python tools, their direct target rows were skipped rather than passed by the portal evaluator. The application instead completed each restricted tool workflow, retained the Foundry response ID and evaluated the stored interaction for intent resolution, tool-call accuracy and tool-input accuracy. Therefore, 24/24 describes selected application contract completion, while the direct Foundry evaluator result is 3/3 for knowledge and 4/4 for chat; these are different measures.")
+    add_body(doc, "The local classification confusion matrix is: expected normal to actual unassessed 5; expected warning to warning 12; expected critical to critical 7; all other cells 0. The five abstentions are MAT-001, MAT-006, MAT-016, MAT-020 and MAT-021. They identify the missing clinically approved low-risk exclusion protocol and are not evidence of five normal classifications.")
+    add_body(doc, "Operational reliability is a separate release gate. The system currently records privacy-minimised operation counts and duration histograms, but this submission does not claim representative latency percentiles, realised cost per completed case, role-level agent/tool failure rates or recovery rates. Those measures, plus delayed and unavailable-network tests, must be collected by release version before production readiness can be assessed.")
     add_body(doc, "The rules were developed with the known fixtures, so the benchmark measures regression coverage rather than generalisation or clinical validity. The northern weighting of the 100-case map is synthetic and cannot be interpreted as prevalence or a prediction about any community.")
     doc.add_heading("14 Limitations and Improvement Roadmap", level=1)
     add_table(doc,
@@ -797,6 +805,7 @@ def build_document():
         ("Microsoft Learn  Prompt agent quickstart", "https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-agent"),
         ("Microsoft Learn  Function calling with Foundry agents", "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/function-calling"),
         ("Microsoft Learn  Observability in generative AI", "https://learn.microsoft.com/en-us/azure/foundry/concepts/observability"),
+        ("Microsoft Learn  Evaluate agents", "https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/evaluate-agent"),
         ("Nigeria Health Facility Registry", "https://hfr.fmohconnect.gov.ng/facilitieslist"),
         ("Apple Developer  Setting up HealthKit", "https://developer.apple.com/documentation/healthkit/setting-up-healthkit"),
         ("Android Developers  Health Connect get started", "https://developer.android.com/health-and-fitness/health-connect/get-started"),
@@ -811,6 +820,7 @@ def build_document():
     add_bullets(doc, [
         "README.md and docs/foundry-setup.md for current runtime, agent versions and live verification status.",
         "docs/evaluation-latest.json for the 24-case regression results.",
+        "docs/foundry-evaluation-latest.json for Foundry evaluation IDs, run IDs, criteria, results and report links.",
         "tests for API, personal data, workflow and Foundry agent boundary coverage.",
         "knowledge/public-sources/maternal-health-public-sources.md for the current retrieval corpus and review record.",
     ], size=9.4)
