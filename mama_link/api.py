@@ -27,6 +27,13 @@ def create_app(db_path=None):
     telemetry_enabled = telemetry.configure()
     app = FastAPI(title="MAMA-Link synthetic demo", version="0.3.0")
     store = Store(db_path or os.getenv("MAMA_LINK_DB", str(ROOT / ".local/mama-link.sqlite3")))
+    allowed_hosts = ["127.0.0.1", "localhost", "testserver"]
+    allowed_hosts.extend(
+        host.strip()
+        for host in os.getenv("MAMA_LINK_ALLOWED_HOSTS", "").split(",")
+        if host.strip()
+    )
+    secure_cookies = os.getenv("MAMA_LINK_SECURE_COOKIES", "false").lower() == "true"
     accounts.initialize(store)
     attempts = {}
 
@@ -45,7 +52,7 @@ def create_app(db_path=None):
         if len(recent) >= count:
             raise HTTPException(429, 'Please wait a minute before trying again')
         attempts[key] = recent + [now]
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=allowed_hosts)
 
     @app.middleware("http")
     async def local_session(request: Request, call_next):
@@ -69,7 +76,13 @@ def create_app(db_path=None):
             request.state.owner = request.state.identity['id']
         response = await call_next(request)
         if fresh:
-            response.set_cookie("mama_session", request.state.owner, httponly=True, samesite="strict")
+            response.set_cookie(
+                "mama_session",
+                request.state.owner,
+                httponly=True,
+                samesite="strict",
+                secure=secure_cookies,
+            )
         response.headers["Cache-Control"] = "no-store"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
@@ -89,7 +102,14 @@ def create_app(db_path=None):
         accounts.revoke(store, request.cookies.get('mama_auth', ''))
         token = accounts.session(store, uid)
         response = JSONResponse({'user': accounts.identity(store, token)})
-        response.set_cookie('mama_auth', token, httponly=True, samesite='strict', max_age=43200)
+        response.set_cookie(
+            'mama_auth',
+            token,
+            httponly=True,
+            samesite='strict',
+            secure=secure_cookies,
+            max_age=43200,
+        )
         return response
 
     @app.post('/api/register')

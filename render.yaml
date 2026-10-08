@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: mama-link
+    runtime: python
+    plan: free
+    autoDeployTrigger: commit
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn mama_link.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: MAMA_LINK_ALLOWED_HOSTS
+        value: "*.onrender.com"
+      - key: MAMA_LINK_SECURE_COOKIES
+        value: "true"
+      - key: MAMA_LINK_DB
+        value: /tmp/mama-link.sqlite3
