@@ -1,4 +1,4 @@
-# Connect the optional six-agent Foundry demo
+# Connect the seven-agent Foundry solution
 
 The web app runs locally without Azure. The separate CLI orchestrates six bounded roles: intake, triage, knowledge, referral, transport support and follow-up. Ask Mama Link uses the Foundry model deployment configured by `AZURE_AI_MODEL_DEPLOYMENT_NAME`; this project's available deployment is `gpt-4.1-mini`. The environment value, saved chat-agent model and live Foundry deployment must agree. It follows Microsoft's [prompt-agent quickstart](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-agent) and [function-calling documentation](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/function-calling) for Azure AI Projects 2.x.
 

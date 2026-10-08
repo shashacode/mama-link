@@ -1,6 +1,6 @@
 # MAMA-Link hackathon build path
 
-**Current status:** The local web app, FastAPI, session history and optional Foundry CLI have now been added. This file records the staged build history; use [the project assessment](project-assessment.md) and [Foundry setup](foundry-setup.md) for the current completion status and next actions.
+**Current status:** The local web app, FastAPI, session history, seven Foundry agents, Application Insights connection and cloud evaluation baselines are implemented. This file preserves the staged build history; use [the project assessment](project-assessment.md), [Foundry setup](foundry-setup.md) and [Foundry evaluation evidence](foundry-evaluation-latest.json) for current status.
 
 Source of product requirements: `MAMA-Link.md`. Learning structure: https://github.com/shashacode/FrontierWeekHack.
 
@@ -8,23 +8,23 @@ Source of product requirements: `MAMA-Link.md`. Learning structure: https://gith
 
 Completed locally: Python package, runtime-safe data access, command-line demo and unit tests.
 
-Next: select an existing Azure subscription and Foundry project, deploy a suitable model, configure local Azure authentication and populate the endpoint/deployment settings in `.env.example`. Verify the SDK version and current Foundry examples before adding SDK dependencies. Provisioning and model calls may incur Azure charges.
+Completed: the existing Azure subscription, `mama-link` Foundry project and `gpt-4.1-mini` deployment are configured. Idempotent infrastructure scripts validate resources and preserve local secrets outside version control. Provisioning and model calls may incur Azure charges.
 
 ## Challenge 1 — Build agents
 
 Completed locally: deterministic screening, capability filtering, support matching and referral preparation.
 
-Next: connect an intake/triage agent and a referral/resource agent to these tools. Start with these two roles, then separate the PRD's six specialist roles as the workflow grows. The model must not override a deterministic escalation, invent facility capabilities, diagnose, prescribe or infer consent. Free-text extraction must retain uncertainty and be confirmed before consequential actions.
+Completed: six workflow roles are connected through the orchestrator—intake, triage, knowledge, referral, transport support and follow-up—plus the separate Ask Mama Link chat agent. Five workflow agents use restricted read-only tools with exact authoritative-output validation; knowledge requires File Search. The model cannot override deterministic escalation, invent facility capabilities, diagnose, prescribe or infer consent.
 
 The prototype executes the supplied seven rules plus two documented [simulation extensions](screening-rules.md). Review uncovered symptoms, missing values, postpartum handling, compound symptoms and unknown inputs with a qualified clinical reviewer before real use. Do not tune clinical logic simply to memorize the synthetic labels.
 
-Create an approved-document corpus with provenance and review status for the knowledge agent. Until retrieval returns an approved source, show that clinical grounding is unavailable rather than generating unsupported clinical advice.
+Implemented for demonstration: a provenance-labelled WHO/UNFPA corpus is indexed in Foundry File Search. It remains pending qualified clinical review and must not be presented as an approved clinical protocol.
 
 ## Challenge 2 — Monitor
 
-Completed locally: per-step timing and status in demo output.
+Completed: Application Insights is connected to the Foundry project as `mamalink-appinsights`. Aggregate operation metrics and metadata-only spans identify each agent role and version. Events, traces, dependencies and metrics were observed for all seven agents. Automatic HTTP, FastAPI and Azure SDK content capture remains disabled; prompts, outputs, symptoms, notes, case IDs and tool payloads are excluded.
 
-Next: OpenTelemetry/Application Insights integration following the selected Foundry SDK. Track tool failures, latency, escalation and consent outcomes. Do not enable patient-message or tool-payload capture by default. Show a real Foundry trace only once integration has been exercised.
+Remaining production work: an Azure administrator must grant the project managed identity Log Analytics Reader on Application Insights and its workspace for trace-filtered service-side evaluations. This does not block the current monitoring dashboards.
 
 ## Challenge 3 — Evaluate
 
@@ -34,21 +34,25 @@ Initial verified baseline (2026-09-18): 8 unit tests pass; 12/24 fixture labels 
 
 Verified after the `0.2-hackathon` extensions: 12 tests pass; 14/24 labels match; 7/7 expected critical cases are classified critical. MAT-009 and MAT-018 now complete capability-aware, consent-gated simulated referral. The other 22 classifications are unchanged. Ten fixtures remain unassessed: five expected warning and five expected normal. Tests also cover missing cluster components, the temperature boundary and severe breathlessness without chest pain.
 
-Next: model evaluation using the supplied portal JSONL, plus referral capability correctness, grounding, prescription/diagnosis refusal, unknown-input behavior and privacy tests. Maintain a separate held-out set. Baseline misses are visible and are not evidence of clinical performance.
+Current verified baseline (2026-09-25): 45 automated tests pass; the local deterministic evaluation matches 19/24 labels, detects 7/7 expected emergencies and matches referral capabilities for 19/19 expected nonroutine cases. Separately, final selected Foundry evaluation runs passed 24/24 synthetic agent interactions across all seven agents. The modeled evaluation ceiling was 329,280 tokens, below the 500,000-token cap, and no optimiser was run.
+
+Next: add an independently authored held-out set plus grounding, unsafe-advice, adversarial and prompt-injection evaluation approved by qualified reviewers. Existing baselines measure regression behaviour, not clinical performance.
 
 ## Challenge 4 — Workflow and demo
 
 Completed locally: MAT-005 screening → capability matching → support matching → consent-gated simulated referral.
 
-Next: FastAPI endpoints, accessible web intake, approved knowledge retrieval, explicit consent UI, synthetic symptom history and authenticated deployment. Follow with Foundry orchestration and hosted tools. Confirm resource availability with humans before any real dispatch integration.
+Completed for the hackathon: FastAPI endpoints, accessible web intake, explicit consent UI, synthetic symptom history, the six-role Foundry workflow and the separate chat agent. Agent diagnostics remain outside the patient-facing interface.
 
-## First demo script
+Next: authenticated hosting, approved knowledge content, verified operational partners and human-confirmed availability before any real referral or dispatch integration.
 
-1. Run `py -m mama_link demo --case MAT-005`.
-2. Show the matched rule and required emergency/surgical/blood capabilities.
-3. Explain why the basic PHC cannot appear among the matches.
-4. Show support matches and the `awaiting_consent` referral.
-5. Run again with `--consent`; show `simulated` and `sent: false`.
-6. Run evaluation and discuss uncovered scenarios transparently.
+## Current demonstration sequence
 
-This completes the first local build milestone, not the full PRD acceptance criteria.
+1. Open the local web app and demonstrate a fictional symptom check.
+2. Show the six workflow agents and separate Ask Mama Link agent in Foundry.
+3. Explain the orchestrator, restricted tools, File Search and exact-output validation.
+4. Show Foundry Monitor with privacy-minimised telemetry and named agent runs.
+5. Show the completed evaluation runs and the 24/24 selected synthetic baseline.
+6. Explain that local rule coverage remains 19/24 and that the prototype is not clinically validated.
+
+This completes the synthetic hackathon milestone, not the clinical or production acceptance criteria.
