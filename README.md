@@ -2,7 +2,7 @@
 
 **Detect danger. Find care. Mobilize help.**
 
-MAMA-Link is a maternal-health support prototype for Nigeria. It combines deterministic symptom screening, care and support discovery, longitudinal history, low-data education, and a bounded multi-agent Microsoft Foundry workflow.
+MAMA-Link is a maternal-health support prototype for Nigeria, powered by a **six-agent system built and orchestrated in Microsoft Foundry**. It combines deterministic symptom screening, care and support discovery, longitudinal history, and low-data education.
 
 ## 🏆 Microsoft Global Agent-a-thon winner
 
@@ -14,6 +14,23 @@ MAMA-Link, created by Flora Oladipupo, was selected as **one of 18 global winner
 
 - **Try the live application:** [Open Ask Mama Link](https://mama-link.onrender.com/#chat)
 - **Watch the solution walkthrough:** [`mamaLinkVid.mp4`](https://github.com/shashacode/mama-link/blob/main/mamaLinkVid.mp4) is included in this repository and demonstrates how the solution works.
+
+## Six-agent Microsoft Foundry architecture
+
+The core workflow is powered by six specialised AI agents built in Microsoft Foundry and orchestrated in sequence:
+
+| Agent | Responsibility |
+| --- | --- |
+| **Intake** | Structures the supplied case information without inferring missing data. |
+| **Triage** | Applies the authoritative screening result and urgency classification. |
+| **Knowledge** | Retrieves grounded educational information through Foundry File Search. |
+| **Referral** | Matches the assessed need to appropriate simulated care capabilities. |
+| **Transport Support** | Identifies relevant simulated transport and community-support options. |
+| **Follow-up** | Prepares the bounded follow-up plan without scheduling or notifying anyone. |
+
+`Intake → Triage → Knowledge → Referral → Transport Support → Follow-up`
+
+**Ask Mama Link** is an additional Foundry education agent used by the chat experience. It is separate from the six-agent case workflow and receives profile context only after explicit user consent.
 
 > **Safety notice:** This repository is a synthetic hackathon demonstration, not a clinically validated triage service. Use fictional information only. It does not contact a facility, dispatch emergency services, or replace a qualified healthcare professional.
 
