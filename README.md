@@ -10,6 +10,11 @@ MAMA-Link, created by Flora Oladipupo, was selected as **one of 18 global winner
 
 [View the 2026 Microsoft Global Agent-a-thon winners announcement on LinkedIn](https://www.linkedin.com/feed/update/urn:li:ugcPost:7513858645458284544/)
 
+## Live demo and solution walkthrough
+
+- **Try the live application:** [Open Ask Mama Link](https://mama-link.onrender.com/#chat)
+- **Watch the solution walkthrough:** [`mamaLinkVid.mp4`](https://github.com/shashacode/mama-link/blob/main/mamaLinkVid.mp4) is included in this repository and demonstrates how the solution works.
+
 > **Safety notice:** This repository is a synthetic hackathon demonstration, not a clinically validated triage service. Use fictional information only. It does not contact a facility, dispatch emergency services, or replace a qualified healthcare professional.
 
 ## Project status — 12 October 2026
