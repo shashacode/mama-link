@@ -4,6 +4,12 @@
 
 MAMA-Link is a maternal-health support prototype for Nigeria. It combines deterministic symptom screening, care and support discovery, longitudinal history, low-data education, and a bounded multi-agent Microsoft Foundry workflow.
 
+## 🏆 Microsoft Global Agent-a-thon winner
+
+MAMA-Link, created by Flora Oladipupo, was selected as **one of 18 global winners** of the **September 2026 Microsoft Global Agent-a-thon**. It won in the **Architect** category for solutions built with Microsoft Foundry. The winners announcement highlights MAMA-Link's six-agent approach to helping pregnant women in underserved communities recognise emergencies, locate appropriate care, and navigate toward support.
+
+[View the 2026 Microsoft Global Agent-a-thon winners announcement on LinkedIn](https://www.linkedin.com/feed/update/urn:li:ugcPost:7513858645458284544/)
+
 > **Safety notice:** This repository is a synthetic hackathon demonstration, not a clinically validated triage service. Use fictional information only. It does not contact a facility, dispatch emergency services, or replace a qualified healthcare professional.
 
 ## Project status — 12 October 2026
